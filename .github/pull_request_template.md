@@ -1,8 +1,8 @@
-## Quoi / Pourquoi
-
-## Comment tester
+## Type de changement
+- [ ] Bug fix (correction d'un bug)
+- [ ] New feature (nouvelle fonctionnalité)
+- [ ] Breaking change (changement majeur)
 
 ## Checklist
-- [ ] Tests et CI verts
-- [ ] Aucun secret
-- [ ] Usage de l'IA mentionne
+- [ ] Mon code suit les conventions du projet
+- [ ] J'ai testé mes modifications localement
