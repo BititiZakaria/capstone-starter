@@ -4,4 +4,5 @@ Depot de depart du fil rouge (API FastAPI + CI + Docker + K8s + monitoring + inf
 Copier ce contenu dans le depot de l'equipe (TP 1). Les fichiers servent aussi de plan B.
 
 ## Mainteneur
+Contact : equipe-dev@example.com
 Contact : equipe-ops@example.com
