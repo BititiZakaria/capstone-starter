@@ -5,3 +5,4 @@ Copier ce contenu dans le depot de l'equipe (TP 1). Les fichiers servent aussi d
 
 ## Mainteneur
 Contact : equipe-dev@example.com
+Contact : equipe-ops@example.com
