@@ -1,4 +1,5 @@
 from fastapi.testclient import TestClient
+
 from app.main import app
 
 client = TestClient(app)
@@ -11,4 +12,5 @@ def test_health():
 
 
 def test_predict():
-    assert client.get("/predict?x=1").json()["label"] == "positive"
+    # Exercice 1 TP3 : Echec volontaire pour declencher un run rouge dans la CI
+    assert client.get("/predict?x=1").json()["label"] == "wrong_label_error"
