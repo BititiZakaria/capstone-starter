@@ -1,5 +1,15 @@
 .git
+.gitignore
 .venv
 __pycache__
+*.pyc
+*.pyo
+.pytest_cache
 .env
 tests
+report*.xml
+audit.log
+labs/
+Dockerfile*
+docker-compose*.yml
+README.md
