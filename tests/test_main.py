@@ -12,5 +12,4 @@ def test_health():
 
 
 def test_predict():
-    # Exercice 1 TP3 : Echec volontaire pour declencher un run rouge dans la CI
-    assert client.get("/predict?x=1").json()["label"] == "wrong_label_error"
+    assert client.get("/predict?x=1").json()["label"] == "positive"
