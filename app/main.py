@@ -1,3 +1,4 @@
+import os
 import time
 
 from fastapi import FastAPI, HTTPException, Request
@@ -6,6 +7,10 @@ from prometheus_client import Counter, Histogram, make_asgi_app
 app = FastAPI(title="capstone-api")
 REQS = Counter("http_requests_total", "Requetes HTTP", ["method", "path", "status"])
 LAT = Histogram("http_request_duration_seconds", "Latence HTTP", ["path"])
+
+# TP6 Exercice 1 : Lecture de la configuration via variables d'environnement
+APP_ENV = os.getenv("APP_ENV", "development")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "info")
 
 
 @app.middleware("http")
@@ -19,12 +24,17 @@ async def metrics_mw(request: Request, call_next):
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "env": APP_ENV}
 
 
 @app.get("/ready")
 def ready():
     return {"ready": True}
+
+
+@app.get("/config")
+def config():
+    return {"environment": APP_ENV, "log_level": LOG_LEVEL}
 
 
 @app.get("/predict")
