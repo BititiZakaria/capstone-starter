@@ -21,6 +21,11 @@ spec:
           ports:
             - containerPort: 8000
               name: http
+          envFrom:
+            - configMapRef:
+                name: capstone-config
+            - secretRef:
+                name: capstone-secret
           resources:
             requests:
               cpu: "100m"
@@ -34,9 +39,13 @@ spec:
               port: 8000
             initialDelaySeconds: 5
             periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
           readinessProbe:
             httpGet:
               path: /ready
               port: 8000
             initialDelaySeconds: 3
             periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 2
