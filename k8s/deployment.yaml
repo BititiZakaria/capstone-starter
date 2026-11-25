@@ -2,15 +2,41 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: capstone-api
+  labels:
+    app: capstone-api
 spec:
   replicas: 2
   selector:
-    matchLabels: {app: capstone-api}
+    matchLabels:
+      app: capstone-api
   template:
     metadata:
-      labels: {app: capstone-api}
+      labels:
+        app: capstone-api
     spec:
       containers:
         - name: api
           image: capstone-api:0.1
-          ports: [{containerPort: 8000}]
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+              name: http
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8000
+            initialDelaySeconds: 3
+            periodSeconds: 5
